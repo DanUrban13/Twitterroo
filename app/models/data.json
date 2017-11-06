@@ -20,38 +20,19 @@
       "password": "secret"
     }
   },
-  "candidates": {
-    "_model": "Candidate",
-    "lisa": {
-      "firstName": "Lisa",
-      "lastName": "Simpson",
-      "office": "President"
-    },
-    "donald": {
-      "firstName": "Donald",
-      "lastName": "Simpson",
-      "office": "President"
-    }
-  },
-  "donations": {
-    "_model": "Donation",
+  "tweets": {
+    "_model": "Tweet",
     "one": {
-      "amount": 40,
-      "method": "paypal",
-      "donor": "->users.bart",
-      "candidate": "->candidates.lisa"
+      "text": "Wow this app is great!",
+      "creator": "->users.marge"
     },
     "two": {
-      "amount": 90,
-      "method": "direct",
-      "donor": "->users.marge",
-      "candidate": "->candidates.lisa"
+      "text": "Ai Caramba!",
+      "creator": "->users.bart"
     },
     "three": {
-      "amount": 430,
-      "method": "paypal",
-      "donor": "->users.homer",
-      "candidate": "->candidates.donald"
+      "text": "Mhmmmm donuts.",
+      "creator": "->users.homer"
     }
   }
 }
