@@ -6,6 +6,7 @@ const tweetSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+  date: Date,
 });
 
 const Tweet = mongoose.model('Tweet', tweetSchema);

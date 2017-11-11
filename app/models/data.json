@@ -24,15 +24,48 @@
     "_model": "Tweet",
     "one": {
       "text": "Wow this app is great!",
-      "creator": "->users.marge"
+      "creator": "->users.marge",
+      "date": "=new Date(2017,09,20,20,15,33,200)"
     },
     "two": {
       "text": "Ai Caramba!",
-      "creator": "->users.bart"
+      "creator": "->users.bart",
+      "date": "=new Date(2017,09,20,20,15,33,200)"
     },
     "three": {
       "text": "Mhmmmm donuts.",
-      "creator": "->users.homer"
+      "creator": "->users.homer",
+      "date": "=new Date(2017,09,20,20,15,33,200)"
+    },
+    "four": {
+      "text": "Mhmmmm donuts.",
+      "creator": "->users.homer",
+      "date": "=new Date(2017,09,20,20,15,33,200)"
+    },
+    "five": {
+      "text": "Mhmmmm donuts.",
+      "creator": "->users.homer",
+      "date": "=new Date(2017,09,20,20,15,33,200)"
+    },
+    "six": {
+      "text": "Mhmmmm donuts.",
+      "creator": "->users.homer",
+      "date": "=new Date(2017,09,20,20,15,33,200)"
+    },
+    "seven": {
+      "text": "Mhmmmm donuts.",
+      "creator": "->users.homer",
+      "date": "=new Date(2017,09,20,20,15,33,200)"
+    },
+    "eight": {
+      "text": "Mhmmmm donuts.",
+      "creator": "->users.homer",
+      "date": "=new Date(2017,09,20,20,15,33,200)"
+    },
+    "nine": {
+      "text": "Mhmmmm donuts.",
+      "creator": "->users.homer",
+      "date": "=new Date(2017,09,20,20,15,33,200)"
     }
   }
 }

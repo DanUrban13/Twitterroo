@@ -1,0 +1,49 @@
+<!--<section class="ui raised segment">-->
+  <!--<div class="ui grid">-->
+    <!--<aside class="six wide column">-->
+      <!--<img src="images/homer5.png" class="ui medium image">-->
+    <!--</aside>-->
+    <!--<article class="eight wide column">-->
+      <!--<table class="ui celled table segment">-->
+        <!--<thead>-->
+        <!--<tr>-->
+          <!--<th>User</th>-->
+          <!--<th>tweet</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--{{#each tweets}}-->
+          <!--<tr>-->
+            <!--<td> {{creator.firstName}} {{creator.lastName}} </td>-->
+            <!--<td> {{text}} </td>-->
+          <!--</tr>-->
+        <!--{{/each}}-->
+        <!--</tbody>-->
+      <!--</table>-->
+    <!--</article>-->
+  <!--</div>-->
+<!--</section>-->
+
+<div class="ui threaded comments">
+  <h3 class="ui dividing header">Your recent History</h3>
+  <div class="comment">
+  {{#each tweets}}
+
+    <a class="avatar">
+      <img src="">
+    </a>
+    <div class="content">
+      <a class="author"> {{creator.firstName}} {{creator.lastName}} </a>
+      <div class="metadata">
+        <span class="date">{{date}} </span>
+      </div>
+      <div class="text">
+        {{text}}
+      </div>
+      <div class="actions">
+        <a class="reply">Reply</a>
+      </div>
+    </div>
+  {{/each}}
+  </div>
+</div>

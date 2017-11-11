@@ -1,0 +1,9 @@
+{{> mainmenu _id="tweet"}}
+<form class="ui reply form" action="/tweet" method="POST" >
+  <div class="field">
+    <textarea value="{{tweet.text}}" name="tweetText"></textarea>
+  </div>
+  <button class="ui blue labeled submit icon button">
+    <i class="icon edit" ></i> Tweet
+  </button>
+</form>

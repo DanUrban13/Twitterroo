@@ -1,0 +1,45 @@
+<section class="ui raised segment">
+  <div class="ui grid ">
+    <div class="ui form six wide column">
+      <div class="ui stacked segment">
+        <form action="/donate" method="POST">
+          <div class="grouped inline fields">
+            <h3> Enter Amount </h3>
+            <div class="field">
+              <label>Amount</label> <input type="number" name="amount">
+            </div>
+          </div>
+          <div class="grouped inline fields">
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="method" value="paypal">
+                <label>Paypal</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="method" value="direct">
+                <label>Direct</label>
+              </div>
+            </div>
+          </div>
+          <div class="grouped inline fields">
+            <h3> Select Candidate </h3>
+            {{#each candidates }}
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="candidate" value="{{lastName}},{{firstName}}">
+                  <label>{{lastName}}, {{firstName}}</label>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+          <button class="ui blue submit button">Donate</button>
+        </form>
+      </div>
+    </div>
+    <aside class="six wide column">
+      <img src="images/homer4.jpeg" class="ui medium image">
+    </aside>
+  </div>
+</section>

@@ -11,21 +11,21 @@ server.register([require('inert'), require('vision'), require('hapi-auth-cookie'
     throw err;
   }
 
-  // server.views({
-  //   engines: {
-  //     hbs: require('handlebars'),
-  //   },
-  //   relativeTo: __dirname,
-  //   path: './app/views',
-  //   layoutPath: './app/views/layout',
-  //   partialsPath: './app/views/partials',
-  //   layout: true,
-  //   isCached: false,
-  // });
+  server.views({
+    engines: {
+      hbs: require('handlebars'),
+    },
+    relativeTo: __dirname,
+    path: './app/views',
+    layoutPath: './app/views/layout',
+    partialsPath: './app/views/partials',
+    layout: true,
+    isCached: false,
+  });
 
   server.auth.strategy('standard', 'cookie', {
     password: 'secretpasswordnotrevealedtoanyone',
-    cookie: 'donation-cookie',
+    cookie: 'twitterroo-cookie',
     isSecure: false,
     ttl: 24 * 60 * 60 * 1000,
     redirectTo: '/login',
