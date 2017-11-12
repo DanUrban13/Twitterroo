@@ -32,30 +32,23 @@ exports.home = {
 
 exports.tweet = {
 
-  // validate: {
-  //
-  //   payload: {
-  //     amount: Joi.number().required(),
-  //     method: Joi.string().required(),
-  //     candidate: Joi.string().required(),
-  //   },
-  //
-  //   options: {
-  //     abortEarly: false,
-  //   },
-  //
-  //   failAction: function (request, reply, source, error) {
-  //     Candidate.find({}).then(candidates => {
-  //       reply.view('home', {
-  //         title: 'Invalid Donation',
-  //         candidates: candidates,
-  //         errors: error.data.details,
-  //       }).code(400);
-  //     }).catch(err => {
-  //       reply.redirect('/');
-  //     });
-  //   },
-  // },
+  validate: {
+
+    payload: {
+      tweetText: Joi.string().min(1).max(140),
+    },
+
+    options: {
+      abortEarly: false,
+    },
+
+    failAction: function (request, reply, source, error) {
+      reply.view('tweet', {
+        title: 'Invalid tweet',
+        errors: error.data.details,
+      }).code(400);
+    },
+  },
 
   handler: function (request, reply) {
     var userEmail = request.auth.credentials.loggedInUser;

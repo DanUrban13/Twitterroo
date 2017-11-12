@@ -24,26 +24,35 @@
   <!--</div>-->
 <!--</section>-->
 
+<script>
+  console.log("inscript");
+  var box = document.getElementById('userHistory');
+  box.scrollTop = box.scrollHeight;
+</script>
+
 <div class="ui threaded comments">
   <h3 class="ui dividing header">Your recent History</h3>
-  <div class="comment">
-  {{#each tweets}}
+  <div id="userHistory" class="ui segment" style="overflow: scroll;  height: 600px;">
 
-    <a class="avatar">
-      <img src="">
-    </a>
-    <div class="content">
-      <a class="author"> {{creator.firstName}} {{creator.lastName}} </a>
-      <div class="metadata">
-        <span class="date">{{date}} </span>
-      </div>
-      <div class="text">
-        {{text}}
-      </div>
-      <div class="actions">
-        <a class="reply">Reply</a>
+    {{#each tweets}}
+    <div class="comment" >
+      <a class="avatar">
+        <img src="">
+      </a>
+      <div class="content">
+        <a class="author"> {{creator.firstName}} {{creator.lastName}} </a>
+        <div class="metadata">
+          <span class="date">{{date}} </span>
+        </div>
+        <div class="text">
+          {{text}}
+        </div>
+        <div class="actions">
+          <a class="reply">Reply</a>
+        </div>
       </div>
     </div>
-  {{/each}}
+    {{/each}}
+
   </div>
 </div>
