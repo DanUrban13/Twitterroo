@@ -7,7 +7,9 @@ const tweetSchema = mongoose.Schema({
     ref: 'User',
   },
   date: Date,
+  dateString: String,
 });
+
 
 const Tweet = mongoose.model('Tweet', tweetSchema);
 module.exports = Tweet;

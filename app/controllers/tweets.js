@@ -10,6 +10,9 @@ exports.home = {
     User.findOne(({ email: userEmail })).then(userFound => {
       return Tweet.find({ creator: userFound }).populate('creator');
     }).then(allTweets => {
+        allTweets.forEach(function(tweet) {
+          tweet.dateString = tweet.date.toUTCString();
+        });
         reply.view('home', {
           title: 'Current Tweets',
           tweets: allTweets,
@@ -59,6 +62,7 @@ exports.tweet = {
       console.log(data);
       userId = user._id;
       tweet = new Tweet();
+      tweet.date = new Date();
       tweet.text = data.tweetText;
       tweet.creator = userId;
       console.log(tweet);

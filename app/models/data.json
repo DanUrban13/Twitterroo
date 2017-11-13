@@ -35,37 +35,37 @@
     "three": {
       "text": "Mhmmmm donuts.",
       "creator": "->users.homer",
-      "date": "=new Date(2017,09,20,20,15,33,200)"
+      "date": "=new Date('October 13, 2014 11:13:00')"
     },
     "four": {
       "text": "Mhmmmm donuts.",
       "creator": "->users.homer",
-      "date": "=new Date(2017,09,20,20,15,33,200)"
+      "date": "=new Date('October 13, 2014 11:13:00')"
     },
     "five": {
       "text": "Mhmmmm donuts.",
       "creator": "->users.homer",
-      "date": "=new Date(2017,09,20,20,15,33,200)"
+      "date": "=new Date('October 13, 2014 11:13:00')"
     },
     "six": {
       "text": "Mhmmmm donuts.",
       "creator": "->users.homer",
-      "date": "=new Date(2017,09,20,20,15,33,200)"
+      "date": "=new Date('October 13, 2014 11:13:00')"
     },
     "seven": {
       "text": "Mhmmmm donuts.",
       "creator": "->users.homer",
-      "date": "=new Date(2017,09,20,20,15,33,200)"
+      "date": "=new Date('October 13, 2014 11:13:00')"
     },
     "eight": {
       "text": "Mhmmmm donuts.",
       "creator": "->users.homer",
-      "date": "=new Date(2017,09,20,20,15,33,200)"
+      "date": "=new Date('October 13, 2014 11:13:00')"
     },
     "nine": {
       "text": "Mhmmmm donuts.",
       "creator": "->users.homer",
-      "date": "=new Date(2017,09,20,20,15,33,200)"
+      "date": "=new Date('October 13, 2014 11:13:00')"
     }
   }
 }
