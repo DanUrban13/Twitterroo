@@ -31,6 +31,20 @@ exports.findSpecific = {
 
 };
 
+exports.findOfUser = {
+
+  auth: false,
+
+  handler: function (request, reply) {
+    Tweet.findOne({ creator: request.params.id }).then(tweets => {
+      reply(tweets);
+    }).catch(err => {
+      reply(Boom.badImplementation('error accessing db'));
+    });
+  },
+
+};
+
 exports.deleteSpecific = {
 
   handler: function (request, reply) {

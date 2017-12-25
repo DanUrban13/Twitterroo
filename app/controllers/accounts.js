@@ -168,3 +168,23 @@ exports.authenticate = {
     });
   },
 };
+
+exports.showUsers = {
+
+  auth: false,
+
+  handler: function (request, reply) {
+    User.find({}).populate('user').then(users => {
+      let userCount = users.length;
+      var users1 = users.slice(0, userCount / 2);
+      var users2 = users.slice(userCount / 2);
+      reply.view('userlist', {
+        user1: users1,
+        user2: users2,
+      });
+    }).catch(err => {
+      reply.redirect('/home');
+    });
+  },
+
+};

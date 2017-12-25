@@ -1,0 +1,28 @@
+<div class="ui container">
+  <div class="ui padded stacked stackable grid segment">
+    <div class="nine wide column" style="overflow: auto;  height: 600px; max-width: 650px; width: 100%;">
+      <div class="ui threaded comments" >
+        <h3 class="ui dividing header">Timeline</h3>
+        <div id="userHistory">
+
+          {{#each tweets}}
+            <div class="comment" >
+              <a class="avatar">
+                <img src="/images/avatar_placeholder.png">
+              </a>
+              <div class="content">
+                <a class="author"> {{creator.firstName}} {{creator.lastName}} </a>
+                <div class="metadata">
+                  <span class="date">{{dateString}} </span>
+                </div>
+                <div class="text">
+                  {{text}}
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

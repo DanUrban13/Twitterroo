@@ -11,13 +11,61 @@
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
-      "password": "secret"
+      "password": "secret",
+      "friends": [
+        "->users.homer"
+      ]
     },
     "bart": {
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
       "password": "secret"
+    },
+    "meggie": {
+      "firstName": "Meggie",
+      "lastName": "Simpson",
+      "email": "meggie@simpson.com",
+      "password": "secret",
+      "friends": [
+        "->users.homer",
+        "->users.marge"
+      ]
+    },
+    "moe": {
+      "firstName": "Moe",
+      "lastName": "Szyslak",
+      "email": "moe@szyslak.com",
+      "password": "secret"
+    },
+    "barney": {
+      "firstName": "Barney",
+      "lastName": "Gumble",
+      "email": "Barney@Gumble.com",
+      "password": "secret",
+      "friends": [
+        "->users.homer",
+        "->users.moe"
+      ]
+    },
+    "edna": {
+      "firstName": "Edna",
+      "lastName": "Krabappel",
+      "email": "Edna@Krabappel.com",
+      "password": "secret",
+      "friends": [
+        "->users.bart"
+      ]
+    },
+    "lisa": {
+      "firstName": "Lisa",
+      "lastName": "Simpson",
+      "email": "Lisa@Simpson.com",
+      "password": "secret",
+      "friends": [
+        "->users.homer",
+        "->users.marge"
+      ]
     }
   },
   "tweets": {
@@ -66,6 +114,22 @@
       "text": "Mhmmmm donuts.",
       "creator": "->users.homer",
       "date": "=new Date('October 13, 2014 11:13:00')"
+    },
+    "ten": {
+      "text": "buuurphhhh",
+      "creator": "->users.barney",
+      "date": "=new Date('October 13, 2014 11:13:00')"
+    },
+    "eleven": {
+      "text": "Want a beer?",
+      "creator": "->users.moe",
+      "date": "=new Date('October 13, 2014 11:13:00')"
+    },
+    "twelve": {
+      "text": "Love to smoke",
+      "creator": "->users.edna",
+      "date": "=new Date('October 13, 2014 11:13:00')"
     }
+
   }
 }

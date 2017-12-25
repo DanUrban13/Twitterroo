@@ -20,17 +20,30 @@ exports.home = {
       }).catch(err => {
         reply.redirect('/');
       });
-
-    // Candidate.find({}).then(candidates => {
-    //   reply.view('home', {
-    //     title: 'Make a ',
-    //     candidates: candidates,
-    //   });
-    // }).catch(err => {
-    //   reply.redirect('/');
-    // });
   },
+};
 
+exports.homeOfUser = {
+
+  auth: false,
+
+  handler: function (request, reply) {
+
+    console.log(request.params.id);
+    User.findOne(({ _id: request.params.id })).then(userFound => {
+      return Tweet.find({ creator: userFound }).populate('creator');
+    }).then(allTweets => {
+      allTweets.forEach(function(tweet) {
+        tweet.dateString = tweet.date.toUTCString();
+      });
+      reply.view('timeline', {
+        title: 'Current Tweets',
+        tweets: allTweets,
+      });
+    }).catch(err => {
+      reply.redirect('/');
+    });
+  },
 };
 
 exports.tweet = {

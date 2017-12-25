@@ -16,8 +16,10 @@ module.exports = [
   { method: 'POST', path: '/settings', config: Accounts.updateSettings },
 
   { method: 'GET', path: '/home', config: Tweets.home },
+  { method: 'GET', path: '/home/{id}', config: Tweets.homeOfUser },
   { method: 'POST', path: '/home', config: Tweets.home },
 
+  { method: 'GET', path: '/userlist', config: Accounts.showUsers },
 
   { method: 'POST', path: '/tweets/delete/{id}', config: Tweets.deleteSpecific },
 
