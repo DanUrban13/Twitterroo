@@ -7,7 +7,7 @@ const userSchema = mongoose.Schema({
   lastName: String,
   email: String,
   password: String,
-  friends: [{
+  following: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   }],

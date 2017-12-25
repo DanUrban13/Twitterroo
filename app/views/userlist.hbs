@@ -19,14 +19,17 @@
               <!--</div>-->
             </div>
             <div class="ui grid extra content">
-              <div class="six wide column">
+              <div class="four wide column">
                 <a >
                   <i class="user icon"></i>
-                  {{ friends.length }} Friends
+                  {{ following.length }} Following
                 </a>
               </div>
-              <div class="six wide column">
+              <div class="four wide column">
                 <a class= "item" href="/home/{{ _id }}"> Timeline</a>
+              </div>
+              <div class="four wide column">
+                <a class= "item" href="/follow/{{ _id }}"> Follow</a>
               </div>
 
             </div>
@@ -52,7 +55,7 @@
               <div class="six wide column">
                 <a >
                   <i class="user icon"></i>
-                  {{ friends.length }} Friends
+                  {{ following.length }} Following
                 </a>
               </div>
               <div class="six wide column">

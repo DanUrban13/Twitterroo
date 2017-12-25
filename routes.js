@@ -21,6 +21,8 @@ module.exports = [
 
   { method: 'GET', path: '/userlist', config: Accounts.showUsers },
 
+  { method: 'GET', path: '/follow/{id}', config: Accounts.addNewFollow },
+
   { method: 'POST', path: '/tweets/delete/{id}', config: Tweets.deleteSpecific },
 
   {

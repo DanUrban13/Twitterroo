@@ -12,7 +12,7 @@
       "lastName": "Simpson",
       "email": "marge@simpson.com",
       "password": "secret",
-      "friends": [
+      "following": [
         "->users.homer"
       ]
     },
@@ -27,7 +27,7 @@
       "lastName": "Simpson",
       "email": "meggie@simpson.com",
       "password": "secret",
-      "friends": [
+      "following": [
         "->users.homer",
         "->users.marge"
       ]
@@ -43,7 +43,7 @@
       "lastName": "Gumble",
       "email": "Barney@Gumble.com",
       "password": "secret",
-      "friends": [
+      "following": [
         "->users.homer",
         "->users.moe"
       ]
@@ -53,7 +53,7 @@
       "lastName": "Krabappel",
       "email": "Edna@Krabappel.com",
       "password": "secret",
-      "friends": [
+      "following": [
         "->users.bart"
       ]
     },
@@ -62,7 +62,7 @@
       "lastName": "Simpson",
       "email": "Lisa@Simpson.com",
       "password": "secret",
-      "friends": [
+      "following": [
         "->users.homer",
         "->users.marge"
       ]

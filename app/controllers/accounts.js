@@ -126,6 +126,25 @@ exports.updateSettings = {
 
 };
 
+exports.addNewFollow = {
+
+  handler: function (request, reply) {
+    const loggedInUserEmail = request.auth.credentials.loggedInUser;
+    let editedUser = null;
+    User.findOne({ email: loggedInUserEmail }).then(user => {
+      editedUser = user;
+      return User.findOne({ _id: request.params.id });
+    }).then(user => {
+        editedUser.following.push(user);
+      return editedUser.save();
+    }).then(user =>{
+      reply.redirect('/userlist');
+    }).catch(err => {
+      reply.redirect('/home');
+    });
+  },
+};
+
 exports.authenticate = {
 
   auth: false,
