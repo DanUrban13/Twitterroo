@@ -18,8 +18,14 @@
                 <div class="text">
                   {{text}}
                 </div>
+
+
+
                 <div class="actions">
-                  <a class="reply">Reply</a>
+                  <form id = "deleteForm{{ _id }}" onsubmit="deleteTweet('{{ _id }}')" method="post">
+                    <input type="hidden" name="id{{ _id }}" value="{{ _id }}">
+                    <button type="submit">delete</button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -32,3 +38,12 @@
     </div>
   </div>
 </div>
+
+<script>
+  function deleteTweet(id){
+    var action_src = "/tweets/delete/" + id;
+    console.log(action_src);
+    var your_form = document.getElementById('deleteForm' + id);
+    your_form.action = action_src ;
+  }
+</script>

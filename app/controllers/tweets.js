@@ -76,6 +76,19 @@ exports.tweet = {
 
 };
 
+exports.deleteSpecific = {
+
+  handler: function (request, reply) {
+    Tweet.findByIdAndRemove( request.params.id ).then(result => {
+      reply.redirect('/home');
+    }).catch(err => {
+      console.log('could not delete tweet');
+      reply.redirect('/');
+    });
+  },
+};
+
+
 exports.form = {
   handler: function (request, reply) {
     reply.view('tweet', {
