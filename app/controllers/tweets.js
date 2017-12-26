@@ -101,6 +101,40 @@ exports.deleteSpecific = {
   },
 };
 
+exports.delete = {
+
+  handler: function (request, reply) {
+    console.log(request.payload);
+    const tweetsToDelete = request.payload;
+    console.log(tweetsToDelete);
+    console.log(tweetsToDelete.tweet);
+    for (let i = 0; i < tweetsToDelete.tweet.length; i++) {
+      console.log(tweetsToDelete.tweet[i]);
+      Tweet.findByIdAndRemove( tweetsToDelete.tweet[i] ).catch(err => {
+        console.log('could not delete tweet');
+      });
+    }
+    reply.redirect('/home');
+  },
+};
+
+exports.deleteAll = {
+  handler: function (request, reply) {
+
+    var userEmail = request.auth.credentials.loggedInUser;
+    let userId = null;
+    User.findOne({ email: userEmail }).then(user => {
+      userId = user._id;
+      return Tweet.remove({ creator: userId });
+    }).then(deleteTweet =>{
+      reply.redirect('/home');
+    }).catch(tweet => {
+      console.log('could not find user');
+      reply.redirect('/home');
+    });
+
+  },
+};
 
 exports.form = {
   handler: function (request, reply) {

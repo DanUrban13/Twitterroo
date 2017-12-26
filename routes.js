@@ -25,6 +25,9 @@ module.exports = [
 
   { method: 'POST', path: '/tweets/delete/{id}', config: Tweets.deleteSpecific },
 
+  { method: 'POST', path: '/tweets/delete', config: Tweets.delete },
+  { method: 'POST', path: '/tweets/deleteAll', config: Tweets.deleteAll },
+
   {
     method: 'GET',
     path: '/{param*}',

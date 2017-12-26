@@ -4,7 +4,18 @@
       <div class="ui threaded comments" >
         <h3 class="ui dividing header">Your recent History</h3>
         <div id="userHistory">
+          <div class="ui grid">
+            <form action="/tweets/deleteAll" method="post">
+              <button class="ui button" type="submit">remove all</button>
+            </form>
+            <form action="/tweets/deleteAll" method="post">
+              <button class="ui button" type="submit">remove all</button>
+            </form>
+          </div>
 
+
+          <form id = "deleteSubset" action="/tweets/delete" method="post">
+              <button class="ui button" type="submit">remove selected</button>
           {{#each tweets}}
             <div class="comment" >
               <a class="avatar">
@@ -21,15 +32,20 @@
 
 
 
-                <div class="actions">
-                  <form id = "deleteForm{{ _id }}" onsubmit="deleteTweet('{{ _id }}')" method="post">
-                    <input type="hidden" name="id{{ _id }}" value="{{ _id }}">
-                    <button type="submit">delete</button>
-                  </form>
+                <!--<div class="actions">-->
+                  <!--<form id = "deleteForm{{ _id }}" onsubmit="deleteTweet('{{ _id }}')" method="post">-->
+                    <!--<input type="hidden" name="id{{ _id }}" value="{{ _id }}">-->
+                    <!--<button type="submit">delete</button>-->
+                  <!--</form>-->
+                <!--</div>-->
+                <div class="ui checkbox">
+                  <input class="right floated" type="checkbox" name="tweet" value="{{ _id }}">
+                  <label></label>
                 </div>
               </div>
             </div>
           {{/each}}
+          </form>
         </div>
       </div>
     </div>

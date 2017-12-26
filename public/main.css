@@ -1,10 +1,10 @@
 
-.item:not(:hover) {
-    color: white;
-    background: green;
-}
+/*.item:not(:hover) {*/
+    /*color: white;*/
+    /*background: green;*/
+/*}*/
 
-.item {
-    background: #2AA9E0;
-    color: #fff;
-}
+/*.item {*/
+    /*background: #2AA9E0;*/
+    /*color: #fff;*/
+/*}*/
