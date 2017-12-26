@@ -135,7 +135,15 @@ exports.addNewFollow = {
       editedUser = user;
       return User.findOne({ _id: request.params.id });
     }).then(user => {
+      var included = false;
+      for (let i = 0; i < editedUser.following.length; i++){
+        if (editedUser.following[i].equals(user._id)) {
+          included = true;
+        }
+      }
+      if(!included){
         editedUser.following.push(user);
+      }
       return editedUser.save();
     }).then(user =>{
       reply.redirect('/userlist');
