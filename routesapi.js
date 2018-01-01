@@ -1,8 +1,12 @@
-const Tweets = require('./app/api/tweetsapi');
+const TweetsApi = require('./app/api/tweetsapi');
+const UsersApi = require('./app/api/userapi');
 
 module.exports = [
 
-  { method: 'GET', path: '/tweets/find', config: Tweets.find },
-  { method: 'GET', path: '/tweets/find/{id}', config: Tweets.findSpecific },
+  { method: 'GET', path: '/api/tweets', config: TweetsApi.find },
+  { method: 'GET', path: '/api/tweets/find/{id}', config: TweetsApi.findSpecific },
 
+  { method: 'GET', path: '/api/users', config: UsersApi.find },
+  { method: 'POST', path: '/api/users', config: UsersApi.create },
+  { method: 'POST', path: '/api/users/authenticate', config: UsersApi.authenticate },
 ];
