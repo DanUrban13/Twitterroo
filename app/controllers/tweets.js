@@ -79,7 +79,13 @@ exports.tweet = {
       tweet.text = data.tweetText;
       tweet.creator = userId;
       console.log(tweet);
-      return tweet.save();
+      return tweet.save(function (error) {
+        if(!error) {
+          Tweet.find({}).populate('creator').exec(function(error, posts) {
+            console.log(JSON.stringify(posts, null, "\t"));
+          });
+        }
+      });
     }).then(tweet => {
       reply.redirect('/home');
     }).catch(err => {

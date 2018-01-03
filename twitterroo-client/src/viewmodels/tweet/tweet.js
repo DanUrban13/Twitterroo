@@ -2,12 +2,15 @@ import {inject} from 'aurelia-framework';
 import TwitterService from '../../services/twitterservice';
 
 @inject(TwitterService)
-export class Tweetlist {
+export class Tweet {
 
-  tweets = [];
+  text = '';
 
   constructor(ts) {
     this.twitterService = ts;
-    this.tweets = this.twitterService.tweets;
+  }
+
+  tweet(e){
+    console.log(this.text);
   }
 }

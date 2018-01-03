@@ -9,11 +9,16 @@ export default class TwitterService {
 
   tweets = [];
   users = [];
+  currentUser = {
+    id: '',
+    email: 'marge@simpson.com'
+  }
 
   constructor(data, ea, ac) {
     this.ea = ea;
     this.ac = ac;
     this.getTweets();
+    this.getUsers();
   }
 
   getTweets() {
@@ -55,6 +60,62 @@ export default class TwitterService {
   //   });
   // }
 
+  getUserData() {
+    for (let i = 0; i < this.users.length; i++){
+      if (this.users[i].email === this.currentUser.email) {
+        return this.users[i];
+      }
+    }
+  }
+
+  getMyTweets() {
+    let tweets = [];
+    for (let i = 0; i < this.tweets.length; i++) {
+      //set currentUser id
+      for (let s = 0; s < this.users.length; s++ ){
+        if (this.currentUser.email === this.users[s].email) {
+          this.currentUser.id = this.users[s]._id;
+        }
+      }
+
+      if (this.currentUser.id === this.tweets[i].creator._id) {
+        tweets.push(this.tweets[i]);
+      }
+    }
+    return tweets;
+  }
+
+  getFriendsTweets() {
+    let tweets = [];
+    let user;
+    for (let s = 0; s < this.users.length; s++ ){
+      if (this.currentUser.email === this.users[s].email) {
+        user = this.users[s];
+      }
+    }
+    for (let j = 0; j < user.following.length; j++) {
+      for (let i = 0; i < this.tweets.length; i++) {
+        if (user.following[j]._id === this.tweets[i].creator._id) {
+          tweets.push(this.tweets[i]);
+        }
+      }
+    }
+    return tweets;
+  }
+
+  settings(firstName, lastName, email, password) {
+    const newUser = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password
+    };
+    this.ac.put('/api/users', newUser).then(res => {
+      this.getUsers();
+    });
+  }
+
+
   register(firstName, lastName, email, password) {
     const newUser = {
       firstName: firstName,
@@ -73,6 +134,8 @@ export default class TwitterService {
       password: password
     };
     this.ac.authenticate('/api/users/authenticate', user);
+    this.currentUser = user;
+
   }
 
   logout() {

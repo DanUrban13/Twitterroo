@@ -8,7 +8,7 @@ exports.find = {
   auth: false,
 
   handler: function (request, reply) {
-    Tweet.find({}).exec().then(tweet => {
+    Tweet.find({}).populate('creator').exec().then(tweet => {
       reply(tweet);
     }).catch(err => {
       reply(Boom.badImplementation('error accessing db'));

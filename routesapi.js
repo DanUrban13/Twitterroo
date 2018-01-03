@@ -8,5 +8,6 @@ module.exports = [
 
   { method: 'GET', path: '/api/users', config: UsersApi.find },
   { method: 'POST', path: '/api/users', config: UsersApi.create },
+  { method: 'PUT', path: '/api/users', config: UsersApi.updateSettings },
   { method: 'POST', path: '/api/users/authenticate', config: UsersApi.authenticate },
 ];

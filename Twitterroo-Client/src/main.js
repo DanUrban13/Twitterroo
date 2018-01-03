@@ -1,9 +1,11 @@
 import environment from './environment';
+import {PLATFORM} from 'aurelia-pal';
 
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
-    .feature('resources');
+    .feature('resources')
+    .plugin(PLATFORM.moduleName('aurelia-dialog'));
 
   if (environment.debug) {
     aurelia.use.developmentLogging();

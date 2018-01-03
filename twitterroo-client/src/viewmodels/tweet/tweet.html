@@ -1,0 +1,12 @@
+<template>
+  <section class="ui grid segment">
+    <form class="ui reply form" submit.delegate="tweet($event)" >
+      <div class="field">
+        <textarea value.bind="text" name="text"></textarea>
+      </div>
+      <button class="ui blue labeled submit icon button">
+        <i class="icon edit" ></i> Tweet
+      </button>
+    </form>
+  </section>
+</template>

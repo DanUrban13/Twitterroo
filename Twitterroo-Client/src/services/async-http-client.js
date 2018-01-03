@@ -25,6 +25,10 @@ export default class AsyncHttpClient {
     return this.http.post(url, obj);
   }
 
+  put(url, obj) {
+    return this.http.put(url, obj);
+  }
+
   delete(url) {
     return this.http.delete(url);
   }

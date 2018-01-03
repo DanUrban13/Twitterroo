@@ -6,13 +6,13 @@ const Boom = require('boom');
 
 exports.find = {
 
-  // auth: false,
-  auth: {
-    strategy: 'jwt',
-  },
+  auth: false,
+  // auth: {
+  //   strategy: 'jwt',
+  // },
 
   handler: function (request, reply) {
-    User.find({}).then(users => {
+    User.find({}).populate('following').then(users => {
       reply(users);
     }).catch(err => {
       reply(Boom.badImplementation('error accessing db'));
@@ -74,6 +74,30 @@ exports.authenticate = {
       }
     }).catch(err => {
       reply(Boom.notFound('internal db failure'));
+    });
+  },
+
+};
+
+exports.updateSettings = {
+
+  auth: {
+    strategy: 'jwt',
+  },
+
+  handler: function (request, reply) {
+    const editedUser = request.payload;
+
+    User.findOne({ email: editedUser.email }).then(user => {
+      user.firstName = editedUser.firstName;
+      user.lastName = editedUser.lastName;
+      user.email = editedUser.email;
+      user.password = editedUser.password;
+      return user.save();
+    }).then(user =>{
+      reply(user).code(201);
+    }).catch(err => {
+      reply(Boom.notFound('user could not be updated'));
     });
   },
 

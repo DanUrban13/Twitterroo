@@ -1,0 +1,67 @@
+<template>
+  <section class="ui raised segment">
+    <div class="ui horizontal segments">
+      <div class="ui segment">
+        <div class="ui card" repeat.for="user of users1">
+          <div class="image">
+            <img src="/assets/images/avatar_placeholder.png">
+          </div>
+          <div class="content">
+            <a class="header">${user.firstName} ${user.lastName}</a>
+            <!--<div class="meta">-->
+            <!--<span class="date">Joined in 2013</span>-->
+            <!--</div>-->
+            <!--<div class="description">-->
+            <!--Kristy is an art director living in New York.-->
+            <!--</div>-->
+          </div>
+          <div class="ui grid extra content">
+            <div class="four wide column">
+              <a >
+                <i class="user icon"></i>
+                ${user.following.length} Following
+              </a>
+            </div>
+            <div class="four wide column">
+              <a class= "item" href="/home/${user._id}"> Timeline</a>
+            </div>
+            <div class="four wide column">
+              <a class= "item" href="/follow/${user._id}"> Follow</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="ui segment">
+        <div class="ui card" repeat.for="user of users2">
+          <div class="image">
+            <img src="/assets/images/avatar_placeholder.png">
+          </div>
+          <div class="content">
+            <a class="header">${user.firstName} ${user.lastName}</a>
+            <!--<div class="meta">-->
+            <!--<span class="date">Joined in 2013</span>-->
+            <!--</div>-->
+            <!--<div class="description">-->
+            <!--Kristy is an art director living in New York.-->
+            <!--</div>-->
+          </div>
+          <div class="ui grid extra content">
+            <div class="four wide column">
+              <a >
+                <i class="user icon"></i>
+                ${user.following.length} Following
+              </a>
+            </div>
+            <div class="four wide column">
+              <a class= "item" href="/home/${user._id}"> Timeline</a>
+            </div>
+            <div class="four wide column">
+              <a class= "item" href="/follow/${user._id}"> Follow</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</template>

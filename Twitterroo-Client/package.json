@@ -1,5 +1,5 @@
 {
-  "name": "donation-client",
+  "name": "twitterroo-client",
   "description": "An Aurelia client application.",
   "version": "0.1.0",
   "repository": {
@@ -10,6 +10,7 @@
   "dependencies": {
     "aurelia-animator-css": "^1.0.2",
     "aurelia-bootstrapper": "^2.1.1",
+    "aurelia-dialog": "^1.0.0-rc.2.0.0",
     "aurelia-http-client": "^1.2.1",
     "bluebird": "^3.4.1",
     "requirejs": "^2.3.2",
