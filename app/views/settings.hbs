@@ -30,7 +30,36 @@
       </div>
     </div>
     <aside class="ui five wide column">
-      <img src="images/avatar_placeholder.png" class="ui medium image">
+      <img src="{{ user.image }}" class="ui medium image">
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="two fields">
+          <div class="field">
+            <label>change picture</label>
+            <input type="file" name="file">  </input>
+          </div>
+        </div>
+        <button class="ui mini blue submit button"> Upload </button>
+      </form>
     </aside>
   </div>
 </section>
+
+
+<!--<section class="ui segment">-->
+  <!--<h1 class="ui header">-->
+    <!--Welcome {{user.firstName}} {{user.lastName}}-->
+  <!--</h1>-->
+
+  <!--<section class="ui raised segment">-->
+    <!--<h1 class="ui header">-->
+      <!--Your Pictures:-->
+    <!--</h1>-->
+  <!--</section>-->
+
+  <!--<section class="ui raised segment">-->
+    <!--<div class="ui small dividing header"> Picture Upload </div>-->
+    <!--<section class="ui raised form segment">-->
+
+    <!--</section>-->
+  <!--</section>-->
+<!--</section>-->

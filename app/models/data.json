@@ -5,13 +5,15 @@
       "firstName": "Homer",
       "lastName": "Simpson",
       "email": "homer@simpson.com",
-      "password": "secret"
+      "password": "secret",
+      "image": "http://res.cloudinary.com/danurban/image/upload/v1514978166/homer_cv1xbe.png"
     },
     "marge": {
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
       "password": "secret",
+      "image": "http://res.cloudinary.com/danurban/image/upload/v1514978165/marge_calrch.png",
       "following": [
         "->users.homer"
       ]
@@ -20,13 +22,15 @@
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
-      "password": "secret"
+      "password": "secret",
+      "image": "http://res.cloudinary.com/danurban/image/upload/v1514978166/bart_wyufqh.png"
     },
     "meggie": {
       "firstName": "Meggie",
       "lastName": "Simpson",
       "email": "meggie@simpson.com",
       "password": "secret",
+      "image": "",
       "following": [
         "->users.homer",
         "->users.marge"
@@ -36,13 +40,15 @@
       "firstName": "Moe",
       "lastName": "Szyslak",
       "email": "moe@szyslak.com",
-      "password": "secret"
+      "password": "secret",
+      "image": "http://res.cloudinary.com/danurban/image/upload/v1514978165/moe_zs3uvb.png"
     },
     "barney": {
       "firstName": "Barney",
       "lastName": "Gumble",
       "email": "Barney@Gumble.com",
       "password": "secret",
+      "image": "http://res.cloudinary.com/danurban/image/upload/v1514978166/barney_zngswx.png",
       "following": [
         "->users.homer",
         "->users.moe"
@@ -53,6 +59,7 @@
       "lastName": "Krabappel",
       "email": "Edna@Krabappel.com",
       "password": "secret",
+      "image": "http://res.cloudinary.com/danurban/image/upload/v1514978166/edna_qzuuii.png",
       "following": [
         "->users.bart"
       ]
@@ -62,6 +69,7 @@
       "lastName": "Simpson",
       "email": "Lisa@Simpson.com",
       "password": "secret",
+      "image": "http://res.cloudinary.com/danurban/image/upload/v1514978166/lisa_u9abca.png",
       "following": [
         "->users.homer",
         "->users.marge"

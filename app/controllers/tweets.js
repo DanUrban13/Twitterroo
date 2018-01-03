@@ -46,6 +46,13 @@ exports.homeOfUser = {
   },
 };
 
+exports.test = {
+
+  handler: function (request, reply) {
+    console.log('called /upload');
+  },
+};
+
 exports.tweet = {
 
   validate: {
@@ -72,17 +79,14 @@ exports.tweet = {
     let tweet = null;
     User.findOne({ email: userEmail }).then(user => {
       let data = request.payload;
-      console.log(data);
       userId = user._id;
       tweet = new Tweet();
       tweet.date = new Date();
       tweet.text = data.tweetText;
       tweet.creator = userId;
-      console.log(tweet);
       return tweet.save(function (error) {
         if(!error) {
           Tweet.find({}).populate('creator').exec(function(error, posts) {
-            console.log(JSON.stringify(posts, null, "\t"));
           });
         }
       });

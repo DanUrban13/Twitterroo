@@ -1,6 +1,7 @@
 const Accounts = require('./app/controllers/accounts');
 const Tweets = require('./app/controllers/tweets');
 const Assets = require('./app/controllers/assets');
+const Utils = require('./app/controllers/utils');
 
 module.exports = [
 
@@ -27,6 +28,17 @@ module.exports = [
 
   { method: 'POST', path: '/tweets/delete', config: Tweets.delete },
   { method: 'POST', path: '/tweets/deleteAll', config: Tweets.deleteAll },
+
+  { method: 'POST', path: '/upload', config: Utils.upload },
+
+  // {
+  //   method: 'POST',
+  //   path: '/api/uploadfiles',
+  //   config: {
+
+  //     handler: Utils.upload.uploadFile,
+  //   }
+  // },
 
   {
     method: 'GET',
