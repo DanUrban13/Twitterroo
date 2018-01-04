@@ -2,23 +2,28 @@
   <div class="ui two column padded stacked stackable grid segment">
     <div class="nine wide column" style="overflow: auto;  height: 600px; max-width: 650px; width: 100%;">
       <div class="ui threaded comments" >
-        <h3 class="ui dividing header">Your recent History</h3>
-        <div id="userHistory">
-          <div class="ui grid">
-            <form action="/tweets/deleteAll" method="post">
-              <button class="ui button" type="submit">remove all</button>
-            </form>
-            <form action="/tweets/deleteAll" method="post">
-              <button class="ui button" type="submit">remove all</button>
-            </form>
+        <div class="ui container">
+          <div class="ui right aligned grid">
+            <div class="left aligned nine wide column">
+              <h3 class="ui dividing header">Your recent History</h3>
+            </div>
+            <div class="right floated left aligned three wide column">
+              <form action="/tweets/deleteAll" method="post">
+                <button class="ui button" type="submit" id="removeAll">remove all</button>
+              </form>
+            </div>
+            <div class="right floated left aligned three wide column">
+              <form id = "deleteSubset" action="/tweets/delete" method="post">
+                <button class="ui button" type="submit" id="removeSelected">remove selected</button>
+              </form>
+
+            </div>
           </div>
-
-
-          <form id = "deleteSubset" action="/tweets/delete" method="post">
-              <button class="ui button" type="submit">remove selected</button>
+        </div>
+        <div id="userHistory">
           {{#each tweets}}
             <div class="comment" >
-              <a class="avatar">
+              <a class="avatar" href="#">
                 <img src="{{ creator.image }}">
               </a>
               <div class="content">
@@ -29,7 +34,34 @@
                 <div class="text">
                   {{text}}
                 </div>
+                <div class="actions">
+                  <!--<a id="test" href="{{ image }}">show picture</a>-->
+                  <div class="ui container">
+                    <div class="ui grid">
+                      <div class="left aligned eight wide column">
+                        <button class="ui button blue mini" type="button" id="{{ image }}" value="{{ _id }}">attached picture</button>
+                      </div>
+                      <div class="right floated left aligned eight wide column">
+                        <div class="ui checkbox">
+                          <input form="deleteSubset" class="right floated" type="checkbox" name="tweet" value="{{ _id }}">
+                          <label></label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
+                <div id="{{ _id }}-modal" class="ui modal">
+                  <i class="close icon"></i>
+                  <div class="header">
+                    Picture
+                  </div>
+                  <div class="image content">
+                    <div class="ui medium image">
+                      <img src="{{ image }}">
+                    </div>
+                  </div>
+                </div>
 
 
                 <!--<div class="actions">-->
@@ -38,14 +70,10 @@
                     <!--<button type="submit">delete</button>-->
                   <!--</form>-->
                 <!--</div>-->
-                <div class="ui checkbox">
-                  <input class="right floated" type="checkbox" name="tweet" value="{{ _id }}">
-                  <label></label>
-                </div>
+
               </div>
             </div>
           {{/each}}
-          </form>
         </div>
       </div>
     </div>
@@ -62,4 +90,15 @@
     var your_form = document.getElementById('deleteForm' + id);
     your_form.action = action_src ;
   }
+
+  $(document).ready(function(){
+    $(':button').click(function(){
+      var id = $(this).attr("value");
+      var modal = '#' + id + '-modal';
+      $(modal).modal('show');
+    });
+    $("button[id=''], button:not([id])").hide();
+  });
+
+
 </script>

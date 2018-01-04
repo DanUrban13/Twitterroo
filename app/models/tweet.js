@@ -8,8 +8,8 @@ const tweetSchema = mongoose.Schema({
   },
   date: Date,
   dateString: String,
+  image: String,
 });
-
 
 const Tweet = mongoose.model('Tweet', tweetSchema);
 module.exports = Tweet;

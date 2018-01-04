@@ -12,6 +12,8 @@ module.exports = [
   { method: 'GET', path: '/logout', config: Accounts.logout },
   { method: 'GET', path: '/tweet', config: Tweets.form },
   { method: 'POST', path: '/tweet', config: Tweets.tweet },
+  { method: 'GET', path: '/tweet/follow', config: Tweets.follow },
+  { method: 'GET', path: '/tweet/global', config: Tweets.global },
   { method: 'POST', path: '/register', config: Accounts.register },
   { method: 'GET', path: '/settings', config: Accounts.viewSettings },
   { method: 'POST', path: '/settings', config: Accounts.updateSettings },
@@ -30,15 +32,6 @@ module.exports = [
   { method: 'POST', path: '/tweets/deleteAll', config: Tweets.deleteAll },
 
   { method: 'POST', path: '/upload', config: Utils.upload },
-
-  // {
-  //   method: 'POST',
-  //   path: '/api/uploadfiles',
-  //   config: {
-
-  //     handler: Utils.upload.uploadFile,
-  //   }
-  // },
 
   {
     method: 'GET',

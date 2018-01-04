@@ -6,7 +6,6 @@ const cloudinary = require('cloudinary')
 
 exports.upload = {
 
-
   payload: {
     output: 'stream',
     parse: true,

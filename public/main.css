@@ -8,3 +8,5 @@
     /*background: #2AA9E0;*/
     /*color: #fff;*/
 /*}*/
+
+A[href=""], A[href="#"] { display: none; }

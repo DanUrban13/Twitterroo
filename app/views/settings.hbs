@@ -2,8 +2,8 @@
 
 <section class="ui raised segment">
   <div class="ui grid">
-    <div class="ui ten wide column">
-      <div class="ui stacked fluid form segment">
+    <div class="ui nine wide column segment">
+      <div class="ui stacked fluid form ">
         <form action="/settings" method="POST">
           <h3 class="ui header">Register</h3>
           <div class="two fields">
@@ -29,37 +29,19 @@
         {{> formerror }}
       </div>
     </div>
-    <aside class="ui five wide column">
-      <img src="{{ user.image }}" class="ui medium image">
-      <form action="/upload" method="POST" enctype="multipart/form-data">
-        <div class="two fields">
-          <div class="field">
-            <label>change picture</label>
-            <input type="file" name="file">  </input>
+    <div class="ui five wide column segment">
+      <aside class="column">
+        <img src="{{ user.image }}" class="ui medium image">
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+          <div class="two fields">
+            <div class="field">
+              <h3 class="ui header">Change Picture</h3>
+              <input type="file" name="file">  </input>
+            </div>
           </div>
-        </div>
-        <button class="ui mini blue submit button"> Upload </button>
-      </form>
-    </aside>
+          <button class="ui mini blue submit button"> Upload </button>
+        </form>
+      </aside>
+    </div>
   </div>
 </section>
-
-
-<!--<section class="ui segment">-->
-  <!--<h1 class="ui header">-->
-    <!--Welcome {{user.firstName}} {{user.lastName}}-->
-  <!--</h1>-->
-
-  <!--<section class="ui raised segment">-->
-    <!--<h1 class="ui header">-->
-      <!--Your Pictures:-->
-    <!--</h1>-->
-  <!--</section>-->
-
-  <!--<section class="ui raised segment">-->
-    <!--<div class="ui small dividing header"> Picture Upload </div>-->
-    <!--<section class="ui raised form segment">-->
-
-    <!--</section>-->
-  <!--</section>-->
-<!--</section>-->

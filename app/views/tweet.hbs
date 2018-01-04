@@ -1,7 +1,13 @@
 {{> mainmenu _id="tweet"}}
-<form class="ui reply form" action="/tweet" method="POST" >
+<form class="ui reply form" action="/tweet" method="POST" enctype="multipart/form-data">
   <div class="field">
     <textarea value="{{tweet.text}}" name="tweetText"></textarea>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <label>add a picture</label>
+      <input type="file" name="file">  </input>
+    </div>
   </div>
   <button class="ui blue labeled submit icon button">
     <i class="icon edit" ></i> Tweet
