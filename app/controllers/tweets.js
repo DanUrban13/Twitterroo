@@ -173,7 +173,6 @@ exports.tweet = {
         tweet.date = new Date();
         tweet.text = data.tweetText;
         tweet.creator = userId;
-        console.log(tweet);
         return tweet.save(function (error) {
           if (!error) {
             Tweet.find({}).populate('creator').exec(function (error, posts) {
@@ -205,15 +204,23 @@ exports.deleteSpecific = {
 exports.delete = {
 
   handler: function (request, reply) {
-    console.log(request.payload);
-    const tweetsToDelete = request.payload;
-    console.log(tweetsToDelete);
-    console.log(tweetsToDelete.tweet);
-    for (let i = 0; i < tweetsToDelete.tweet.length; i++) {
-      console.log(tweetsToDelete.tweet[i]);
-      Tweet.findByIdAndRemove( tweetsToDelete.tweet[i] ).catch(err => {
+    let tweetsToDelete = [];
+    tweetsToDelete = request.payload;
+    let length = tweetsToDelete.tweet.length;
+    if (length > 15) {
+      Tweet.findById( tweetsToDelete.tweet ).then(tweet => {
+        return Tweet.remove( tweet ).exec();
+      }).catch(err => {
         console.log('could not delete tweet');
       });
+    } else {
+      for (let i = 0; i < length; i++) {
+        Tweet.findById( tweetsToDelete.tweet[i] ).then(tweet => {
+          return Tweet.remove( tweet ).exec();
+        }).catch(err => {
+          console.log('could not delete tweet');
+        });
+      }
     }
     reply.redirect('/home');
   },
