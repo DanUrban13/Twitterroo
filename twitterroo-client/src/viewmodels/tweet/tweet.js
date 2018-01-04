@@ -11,6 +11,6 @@ export class Tweet {
   }
 
   tweet(e){
-    console.log(this.text);
+    this.twitterService.tweet(this.text);
   }
 }

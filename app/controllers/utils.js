@@ -1,6 +1,5 @@
 'use strict';
 const User = require('../models/user');
-const Joi = require('joi');
 const fs = require('fs');
 const cloudinary = require('cloudinary')
 

@@ -4,7 +4,7 @@
       <div class="ui segment">
         <div class="ui card" repeat.for="user of users1">
           <div class="image">
-            <img src="/assets/images/avatar_placeholder.png">
+            <img src="${user.image}">
           </div>
           <div class="content">
             <a class="header">${user.firstName} ${user.lastName}</a>
@@ -23,7 +23,7 @@
               </a>
             </div>
             <div class="four wide column">
-              <a class= "item" href="/home/${user._id}"> Timeline</a>
+              <a class= "item" href="/home/${user._id}" value="${user._id}" click.delegate="test($event.target)"> Timeline</a>
             </div>
             <div class="four wide column">
               <a class= "item" href="/follow/${user._id}"> Follow</a>
@@ -35,7 +35,7 @@
       <div class="ui segment">
         <div class="ui card" repeat.for="user of users2">
           <div class="image">
-            <img src="/assets/images/avatar_placeholder.png">
+            <img src="${user.image}">
           </div>
           <div class="content">
             <a class="header">${user.firstName} ${user.lastName}</a>

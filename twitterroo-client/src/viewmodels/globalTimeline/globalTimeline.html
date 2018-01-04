@@ -5,7 +5,7 @@
     <div id="userHistory">
       <div repeat.for="tweet of tweets" class="comment" >
         <a class="avatar">
-          <img src="/assets/images/avatar_placeholder.png">
+          <img src="${tweet.creator.image}">
         </a>
         <div class="content">
           <a class="author"> ${tweet.creator.firstName} ${tweet.creator.lastName} </a>

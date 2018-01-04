@@ -17,6 +17,7 @@ exports.home = {
         });
         allTweets.sort(function(a,b) {return (a.date.getDate() > b.date.getDate()) ? 1 : ((b.date.getDate() > a.date.getDate()) ? -1 : 0);} );
         reply.view('home', {
+          adminuser: request.auth.credentials.loggedInUser,
           title: 'Current Tweets',
           tweets: allTweets,
         });
@@ -39,6 +40,7 @@ exports.homeOfUser = {
       });
       allTweets.sort(function(a,b) {return (a.date.getDate() > b.date.getDate()) ? 1 : ((b.date.getDate() > a.date.getDate()) ? -1 : 0);} );
       reply.view('timeline', {
+        adminuser: request.auth.credentials.loggedInUser,
         title: 'Current Tweets',
         tweets: allTweets,
       });
@@ -70,6 +72,7 @@ exports.follow = {
       });
       tweets.sort(function(a,b) {return (a.date.getDate() > b.date.getDate()) ? 1 : ((b.date.getDate() > a.date.getDate()) ? -1 : 0);} );
       reply.view('timelineFollow', {
+        adminuser: request.auth.credentials.loggedInUser,
         title: 'Current Tweets',
         tweets: tweets,
       });
@@ -88,6 +91,7 @@ exports.global = {
       });
       allTweets.sort(function(a,b) {return (a.date.getDate() > b.date.getDate()) ? 1 : ((b.date.getDate() > a.date.getDate()) ? -1 : 0);} );
       reply.view('timelineGlobal', {
+        adminuser: request.auth.credentials.loggedInUser,
         title: 'Current Tweets',
         tweets: allTweets,
       });
@@ -246,6 +250,7 @@ exports.deleteAll = {
 exports.form = {
   handler: function (request, reply) {
     reply.view('tweet', {
+      adminuser: request.auth.credentials.loggedInUser,
       title: 'Write your Tweet',
     });
   },

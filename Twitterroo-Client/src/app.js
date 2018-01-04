@@ -10,12 +10,14 @@ export class App {
     this.au = au;
     this.ts = ts;
     ea.subscribe(LoginStatus, msg => {
-      this.router.navigate('/', { replace: true, trigger: false });
-      this.router.reset();
-      if (msg.status === true) {
-        au.setRoot('home');
+      if (msg.status.success === true) {
+        au.setRoot('home').then(() => {
+          this.router.navigateToRoute('dashboard');
+        });
       } else {
-        au.setRoot('app');
+        au.setRoot('app').then(() => {
+          this.router.navigateToRoute('login');
+        });
       }
     });
   }
@@ -28,11 +30,11 @@ export class App {
     this.router = router;
   }
 
-  attached() {
-    if (this.ts.isAuthenticated()) {
-      this.au.setRoot('home').then(() => {
-        this.router.navigateToRoute('dashboard');
-      });
-    }
-  }
+  // attached() {
+  //   if (this.ts.isAuthenticated()) {
+  //     this.au.setRoot('home').then(() => {
+  //       this.router.navigateToRoute('dashboard');
+  //     });
+  //   }
+  // }
 }

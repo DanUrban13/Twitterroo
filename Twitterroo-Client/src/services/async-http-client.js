@@ -35,10 +35,9 @@ export default class AsyncHttpClient {
 
   authenticate(url, user) {
     this.http.post(url, user).then(response => {
-
       const status = response.content;
       if (status.success) {
-        localStorage.twitterroo = JSON.stringify(response.content);
+        localStorage.donation = JSON.stringify(response.content);
         this.http.configure(configuration => {
           configuration.withHeader('Authorization', 'bearer ' + response.content.token);
         });
@@ -47,28 +46,16 @@ export default class AsyncHttpClient {
     }).catch(error => {
       const status = {
         success: false,
-        message: 'service not available'
+        message: 'service not avilable'
       };
       this.ea.publish(new LoginStatus(status));
     });
   }
 
   clearAuthentication() {
-    localStorage.twitterroo = null;
+    localStorage.donation = null;
     this.http.configure(configuration => {
       configuration.withHeader('Authorization', '');
     });
-  }
-
-  isAuthenticated() {
-    let authenticated = false;
-    if (localStorage.twitterroo !== 'null') {
-      authenticated = true;
-      this.http.configure(http => {
-        const auth = JSON.parse(localStorage.twitterroo);
-        http.withHeader('Authorization', 'bearer ' + auth.token);
-      });
-    }
-    return authenticated;
   }
 }

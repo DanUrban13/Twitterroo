@@ -4,6 +4,7 @@ const UsersApi = require('./app/api/userapi');
 module.exports = [
 
   { method: 'GET', path: '/api/tweets', config: TweetsApi.find },
+  { method: 'POST', path: '/api/tweet/create', config: TweetsApi.create },
   { method: 'GET', path: '/api/tweets/find/{id}', config: TweetsApi.findSpecific },
 
   { method: 'GET', path: '/api/users', config: UsersApi.find },

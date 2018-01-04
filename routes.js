@@ -17,6 +17,7 @@ module.exports = [
   { method: 'POST', path: '/register', config: Accounts.register },
   { method: 'GET', path: '/settings', config: Accounts.viewSettings },
   { method: 'POST', path: '/settings', config: Accounts.updateSettings },
+  { method: 'GET', path: '/mgmtUser', config: Accounts.show },
 
   { method: 'GET', path: '/home', config: Tweets.home },
   { method: 'GET', path: '/home/{id}', config: Tweets.homeOfUser },

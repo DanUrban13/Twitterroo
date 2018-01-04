@@ -23,6 +23,7 @@ server.register([require('inert'), require('vision'), require('hapi-auth-cookie'
     path: './app/views',
     layoutPath: './app/views/layout',
     partialsPath: './app/views/partials',
+    helpersPath: './app/views/helpers',
     layout: true,
     isCached: false,
   });

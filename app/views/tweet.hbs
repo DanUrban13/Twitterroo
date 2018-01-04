@@ -1,4 +1,8 @@
-{{> mainmenu _id="tweet"}}
+{{#mainMenu adminuser}}
+  {{> mainmenu _id="tweet" }}
+{{else}}
+  {{> adminmenu _id="tweet" }}
+{{/mainMenu}}
 <form class="ui reply form" action="/tweet" method="POST" enctype="multipart/form-data">
   <div class="field">
     <textarea value="{{tweet.text}}" name="tweetText"></textarea>

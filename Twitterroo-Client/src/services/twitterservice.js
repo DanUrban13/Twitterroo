@@ -34,31 +34,18 @@ export default class TwitterService {
   }
 
   tweet(text) {
-    // const donation = {
-    //   amount: amount,
-    //   method: method
-    // };
-    // this.ac.post('/api/candidates/' + candidate._id + '/donations', donation).then(res => {
-    //   const returnedDonation = res.content;
-    //   this.donations.push(returnedDonation);
-    //   console.log(amount + ' donated to ' + candidate.firstName + ' ' + candidate.lastName + ': ' + method);
-    //
-    //   this.total = this.total + parseInt(amount, 10);
-    //   console.log('Total so far ' + this.total);
-    //   this.ea.publish(new TotalUpdate(this.total));
-    // });
-  }
+    const tweet = {
+      text: text
+    };
+    this.ac.post('/api/tweet/create', tweet).then(res => {
+      const returnedTweet = res.content;
+      this.tweets.push(returnedTweet);
 
-  // addCandidate(firstName, lastName, office) {
-  //   const candidate = {
-  //     firstName: firstName,
-  //     lastName: lastName,
-  //     office: office
-  //   };
-  //   this.ac.post('/api/candidates', candidate).then(res => {
-  //     this.candidates.push(res.content);
-  //   });
-  // }
+      // this.total = this.total + parseInt(amount, 10);
+      // console.log('Total so far ' + this.total);
+      // this.ea.publish(new TotalUpdate(this.total));
+    });
+  }
 
   getUserData() {
     for (let i = 0; i < this.users.length; i++){
@@ -145,9 +132,5 @@ export default class TwitterService {
     };
     this.ac.clearAuthentication();
     this.ea.publish(new LoginStatus(status));
-  }
-
-  isAuthenticated() {
-    return this.ac.isAuthenticated();
   }
 }

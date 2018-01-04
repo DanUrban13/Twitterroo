@@ -1,21 +1,23 @@
 <template>
-  <div class="ui threaded comments" >
-    <h3 class="ui dividing header">Your recent History</h3>
-    <div id="userHistory">
-      <div repeat.for="tweet of tweets" class="comment" >
-        <a class="avatar">
-          <img src="/assets/images/avatar_placeholder.png">
-        </a>
-        <div class="content">
-          <a class="author"> ${tweet.creator.firstName} ${tweet.creator.lastName} </a>
-          <div class="metadata">
-            <span class="date"> ${tweet.dateString} </span>
-          </div>
-          <div class="text">
-            ${tweet.text}
+  <section class="ui grid segment">
+    <div class="ui threaded comments" >
+      <h3 class="ui dividing header">Friends History</h3>
+      <div id="userHistory">
+        <div repeat.for="tweet of tweets" class="comment" >
+          <a class="avatar">
+            <img src="${tweet.creator.image}">
+          </a>
+          <div class="content">
+            <a class="author"> ${tweet.creator.firstName} ${tweet.creator.lastName} </a>
+            <div class="metadata">
+              <span class="date"> ${tweet.dateString} </span>
+            </div>
+            <div class="text">
+              ${tweet.text}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>

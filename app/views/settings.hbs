@@ -1,4 +1,8 @@
-{{> mainmenu _id="settings" }}
+{{#mainMenu adminuser}}
+  {{> mainmenu _id="settings" }}
+{{else}}
+  {{> adminmenu _id="settings" }}
+{{/mainMenu}}
 
 <section class="ui raised segment">
   <div class="ui grid">

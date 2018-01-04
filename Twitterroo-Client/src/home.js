@@ -1,7 +1,7 @@
 import { inject, Aurelia } from 'aurelia-framework';
 
 @inject(Aurelia)
-export class Home {
+export default class Home {
 
   constructor(au) {
     this.aurelia = au;

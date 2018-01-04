@@ -1,9 +1,8 @@
 {{#mainMenu adminuser}}
-  {{> mainmenu _id="follow" }}
+  {{> mainmenu _id="home" }}
 {{else}}
-  {{> adminmenu _id="follow" }}
+  {{> adminmenu _id="mgmtUser" }}
 {{/mainMenu}}
-
 <section class="ui raised segment">
-  {{> tweetlistRestricted }}
+  {{> adminUserlist }}
 </section>

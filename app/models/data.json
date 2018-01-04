@@ -30,7 +30,7 @@
       "lastName": "Simpson",
       "email": "meggie@simpson.com",
       "password": "secret",
-      "image": "",
+      "image": "http://res.cloudinary.com/danurban/image/upload/v1515086239/5147886-215px-maggie_knyvyt.png",
       "following": [
         "->users.homer",
         "->users.marge"
@@ -63,6 +63,13 @@
       "following": [
         "->users.bart"
       ]
+    },
+    "quimby": {
+      "firstName": "Joseph",
+      "lastName": "Quimby",
+      "email": "joseph@quimby.com",
+      "password": "secret",
+      "image": "http://res.cloudinary.com/danurban/image/upload/v1515092761/quimby_zohlfr.gif"
     },
     "lisa": {
       "firstName": "Lisa",

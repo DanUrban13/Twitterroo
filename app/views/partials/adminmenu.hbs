@@ -1,0 +1,34 @@
+
+<section class="ui grid segment">
+  <article class="six wide stretched column">
+    <figure>
+      <img src="/images/shot_bird.png" class="ui medium image">
+    </figure>
+  </article>
+  <article class="three wide column segment">
+    <nav class="ui vertical fluid right menu">
+      <a id="manageUser"   class= "item" href="/mgmtUser"> Manage Users</a>
+      <a id="manageTweet" class= "item" href="/mgmtTweet"> Manage Tweets</a>
+    </nav>
+  </article>
+  <article class="three wide column segment">
+    <nav class="ui vertical fluid right menu">
+      <a id="home"   class= "item" href="/home"> Home</a>
+      <a id="tweet" class= "item" href="/tweet"> Tweet</a>
+      <a id="userlist" class= "item" href="/userlist"> Userlist</a>
+      <a id="follow" class= "item" href="/tweet/follow"> Timeline Following</a>
+    </nav>
+  </article>
+  <article class="three wide column segment">
+    <nav class="ui vertical fluid right menu">
+      <a id="global"   class= "item" href="/tweet/global"> Timeline Global</a>
+      <a id="statistics" class= "item" href="/home"> Statistics </a>
+      <a id="settings" class= "item" href="/settings"> Settings</a>
+      <a id="logout" class= "item" href="/logout"> Logout</a>
+    </nav>
+  </article>
+</section>
+
+<script>
+  $("#{{_id}}").addClass("active item");
+</script>

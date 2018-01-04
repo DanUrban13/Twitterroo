@@ -1,5 +1,9 @@
 
-{{> mainmenu _id="userlist"}}
+{{#mainMenu adminuser}}
+  {{> mainmenu _id="userlist" }}
+{{else}}
+  {{> adminmenu _id="userlist" }}
+{{/mainMenu}}
 
   <section class="ui raised segment">
     <div class="ui horizontal segments">
@@ -58,8 +62,11 @@
                   {{ following.length }} Following
                 </a>
               </div>
-              <div class="six wide column">
+              <div class="four wide column">
                 <a class= "item" href="/home/{{ _id }}"> Timeline</a>
+              </div>
+              <div class="four wide column">
+                <a class= "item" href="/follow/{{ _id }}"> Follow</a>
               </div>
 
             </div>

@@ -75,7 +75,11 @@ exports.viewSettings = {
 
   handler: function (request, reply) {
     User.findOne({ email: request.auth.credentials.loggedInUser }).then(foundUser => {
-      reply.view('settings', { title: 'Edit Account Settings', user: foundUser });
+      reply.view('settings', {
+        adminuser: request.auth.credentials.loggedInUser,
+        title: 'Edit Account Settings',
+        user: foundUser,
+      });
     }).catch(err => {
       reply.redirect('/');
     });
@@ -146,7 +150,9 @@ exports.addNewFollow = {
       }
       return editedUser.save();
     }).then(user =>{
-      reply.redirect('/userlist');
+      reply.redirect('/userlist', {
+        adminuser: request.auth.credentials.loggedInUser,
+      });
     }).catch(err => {
       reply.redirect('/home');
     });
@@ -206,8 +212,24 @@ exports.showUsers = {
       var users1 = users.slice(0, userCount / 2);
       var users2 = users.slice(userCount / 2);
       reply.view('userlist', {
+        adminuser: request.auth.credentials.loggedInUser,
         user1: users1,
         user2: users2,
+      });
+    }).catch(err => {
+      reply.redirect('/home');
+    });
+  },
+
+};
+
+exports.show = {
+
+  handler: function (request, reply) {
+    User.find({}).populate('user').then(users => {
+      reply.view('mgmtUser', {
+        adminuser: request.auth.credentials.loggedInUser,
+        user: users,
       });
     }).catch(err => {
       reply.redirect('/home');

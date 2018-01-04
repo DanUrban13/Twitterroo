@@ -1,4 +1,8 @@
-{{> mainmenu _id="userlist" }}
+{{#mainMenu adminuser}}
+  {{> mainmenu _id="userlist" }}
+{{else}}
+  {{> adminmenu _id="userlist" }}
+{{/mainMenu}}
 
 <section class="ui raised segment">
   {{> tweetlistOfUser }}

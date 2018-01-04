@@ -1,8 +1,14 @@
 <template>
   <section class="ui grid segment">
-    <form class="ui reply form" submit.delegate="tweet($event)" >
+    <form class="ui reply form" submit.delegate="tweet($event)">
       <div class="field">
         <textarea value.bind="text" name="text"></textarea>
+      </div>
+      <div class="two fields">
+        <div class="field">
+          <label>add a picture</label>
+          <input type="file" name="file">  </input>
+        </div>
       </div>
       <button class="ui blue labeled submit icon button">
         <i class="icon edit" ></i> Tweet

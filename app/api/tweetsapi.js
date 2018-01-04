@@ -1,6 +1,7 @@
 'use strict';
 
 const Tweet = require('../models/tweet');
+const utils = require('./utils');
 const Boom = require('boom');
 
 exports.find = {
@@ -40,6 +41,30 @@ exports.findOfUser = {
       reply(tweets);
     }).catch(err => {
       reply(Boom.badImplementation('error accessing db'));
+    });
+  },
+
+};
+
+exports.create = {
+
+  auth: false,
+  // auth: {
+  //   strategy: 'jwt',
+  // },
+
+  handler: function (request, reply) {
+
+    const tweet = new Tweet(request.payload);
+    tweet.creator = utils.getUserIdFromRequest(request);
+    tweet.date = new Date();
+
+    tweet.save().then(newTweet => {
+      Tweet.findOne(newTweet).populate('creator').then(tweet =>{
+        reply(tweet).code(201);
+      })
+    }).catch(err => {
+      reply(Boom.badImplementation('error making tweet'));
     });
   },
 
