@@ -98,31 +98,30 @@ exports.global = {
 };
 
 exports.tweet = {
-
   payload: {
-    output: 'stream',
-    parse: true,
-    allow: 'multipart/form-data',
-    maxBytes: 2 * 1000 * 1000
+        output: 'stream',
+        parse: true,
+        allow: 'multipart/form-data',
+        maxBytes: 2 * 1000 * 1000
   },
+  validate: {
 
-  // validate: {
-  //
-  //   payload: {
-  //     tweetText: Joi.string().min(1).max(140),
-  //   },
-  //
-  //   options: {
-  //     abortEarly: false,
-  //   },
-  //
-  //   failAction: function (request, reply, source, error) {
-  //     reply.view('tweet', {
-  //       title: 'Invalid tweet',
-  //       errors: error.data.details,
-  //     }).code(400);
-  //   },
-  // },
+    payload: {
+      tweetText: Joi.string().min(1).max(140),
+      file: Joi.any(),
+    },
+
+    options: {
+      abortEarly: false,
+    },
+
+    failAction: function (request, reply, source, error) {
+      reply.view('tweet', {
+        title: 'Invalid tweet',
+        errors: error.data.details,
+      }).code(400);
+    },
+  },
 
   handler: function (request, reply) {
     var userEmail = request.auth.credentials.loggedInUser;
