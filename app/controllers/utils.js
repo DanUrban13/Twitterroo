@@ -39,7 +39,11 @@ exports.upload = {
           if (err) throw err;
           console.log('successfully deleted /tmp/hello');
         });
-        reply.view('settings', { title: 'Edit Account Settings', user: user });
+        reply.view('settings', {
+          title: 'Edit Account Settings',
+          user: user,
+          adminuser: request.auth.credentials.loggedInUser,
+        });
       }).catch(err => {
         reply.redirect('/');
       });

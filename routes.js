@@ -35,6 +35,8 @@ module.exports = [
 
   { method: 'POST', path: '/tweets/delete', config: Tweets.delete },
   { method: 'POST', path: '/tweets/deleteAll', config: Tweets.deleteAll },
+  { method: 'POST', path: '/tweets/deleteAdmin', config: Tweets.deleteAdmin },
+  { method: 'POST', path: '/tweets/deleteAllAdmin', config: Tweets.deleteAllAdmin },
 
   { method: 'POST', path: '/upload', config: Utils.upload },
 

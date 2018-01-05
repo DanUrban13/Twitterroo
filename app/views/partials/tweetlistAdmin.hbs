@@ -1,8 +1,22 @@
 <div class="ui container">
-  <div class="ui padded stacked stackable grid segment">
+  <div class="ui two column padded stacked stackable grid segment">
     <div class="nine wide column" style="overflow: auto;  height: 600px; max-width: 650px; width: 100%;">
       <div class="ui threaded comments" >
-        <h3 class="ui dividing header">Timeline</h3>
+        <div class="ui container">
+          <div class="ui right aligned grid">
+            <div class="right floated left aligned three wide column">
+              <form action="/tweets/deleteAllAdmin" method="post">
+                <button class="ui button" type="submit" id="removeAll">remove all</button>
+              </form>
+            </div>
+            <div class="right floated left aligned three wide column">
+              <form id = "deleteSubset" action="/tweets/deleteAdmin" method="post">
+                <button class="ui button" type="submit" id="removeSelected">remove selected</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
         <div id="userHistory">
           {{#each tweets}}
             <div class="comment" >
@@ -24,6 +38,10 @@
                         <button class="ui button blue mini" type="button" id="{{ image }}" value="{{ _id }}">attached picture</button>
                       </div>
                       <div class="right floated left aligned eight wide column">
+                        <div class="ui checkbox">
+                          <input form="deleteSubset" class="right floated" type="checkbox" name="tweet" value="{{ _id }}">
+                          <label></label>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -40,6 +58,7 @@
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           {{/each}}
@@ -50,6 +69,13 @@
 </div>
 
 <script>
+  function deleteTweet(id){
+    var action_src = "/tweets/delete/" + id;
+    console.log(action_src);
+    var your_form = document.getElementById('deleteForm' + id);
+    your_form.action = action_src ;
+  }
+
   $(document).ready(function(){
     $(':button').click(function(){
       var id = $(this).attr("value");
@@ -58,4 +84,6 @@
     });
     $("button[id=''], button:not([id])").hide();
   });
+
+
 </script>

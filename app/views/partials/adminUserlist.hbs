@@ -64,10 +64,10 @@
             <a class="header">{{ firstName }} {{ lastName }}</a>
             <div class="description">{{ following.length }} Following</div>
           </div>
-          <div class="ui checkbox">
-            <input form="deleteSubset" class="right floated" type="checkbox" name="user" value="{{ _id }}">
-            <label></label>
-          </div>
+        </div>
+        <div class="ui checkbox">
+          <input form="deleteSubset" class="right floated" type="checkbox" name="user" value="{{ _id }}">
+          <label></label>
         </div>
       {{/each}}
     </div>

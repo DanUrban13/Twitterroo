@@ -4,9 +4,8 @@
   {{> adminmenu _id="settings" }}
 {{/mainMenu}}
 
-<section class="ui raised segment">
-  <div class="ui grid">
-    <div class="ui nine wide column segment">
+<section class="ui two column padded stacked stackable grid segment">
+    <div class="ui column segment">
       <div class="ui stacked fluid form ">
         <form action="/settings" method="POST">
           <h3 class="ui header">Register</h3>
@@ -33,19 +32,16 @@
         {{> formerror }}
       </div>
     </div>
-    <div class="ui five wide column segment">
-      <aside class="column">
-        <img src="{{ user.image }}" class="ui medium image">
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-          <div class="two fields">
-            <div class="field">
-              <h3 class="ui header">Change Picture</h3>
-              <input type="file" name="file">  </input>
-            </div>
+    <aside class="column">
+      <img src="{{ user.image }}" class="ui medium image">
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="two fields">
+          <div class="field">
+            <h3 class="ui header">Change Picture</h3>
+            <input type="file" name="file">  </input>
           </div>
-          <button class="ui mini blue submit button"> Upload </button>
-        </form>
-      </aside>
-    </div>
-  </div>
+        </div>
+        <button class="ui mini blue submit button"> Upload </button>
+      </form>
+    </aside>
 </section>

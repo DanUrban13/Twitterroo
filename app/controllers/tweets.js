@@ -267,6 +267,50 @@ exports.deleteAll = {
   },
 };
 
+exports.deleteAdmin = {
+
+  handler: function (request, reply) {
+    let tweetsToDelete = [];
+    tweetsToDelete = request.payload;
+    let length = tweetsToDelete.tweet.length;
+    if (length > 15) {
+      Tweet.findById( tweetsToDelete.tweet ).then(tweet => {
+        return Tweet.remove( tweet ).exec();
+      }).then(res => {
+        reply.redirect('/mgmtTweet');
+      }).catch(err => {
+        console.log('could not delete tweet');
+      });
+    } else {
+      for (let i = 0; i < length; i++) {
+        Tweet.findById( tweetsToDelete.tweet[i] ).then(tweet => {
+          return Tweet.remove( tweet ).exec();
+        }).then(res => {
+          reply.redirect('/mgmtTweet');
+        }).catch(err => {
+          console.log('could not delete tweet');
+        });
+      }
+    }
+
+  },
+};
+
+exports.deleteAllAdmin = {
+  handler: function (request, reply) {
+
+    var userEmail = request.auth.credentials.loggedInUser;
+    let userId = null;
+    Tweet.remove({}).then(deleteTweet =>{
+      reply.redirect('/mgmtTweet');
+    }).catch(tweet => {
+      console.log('could not find user');
+      reply.redirect('/home');
+    });
+
+  },
+};
+
 exports.form = {
   handler: function (request, reply) {
     reply.view('tweet', {
