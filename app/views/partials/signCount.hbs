@@ -1,0 +1,16 @@
+<div class="left floated left aligned four wide column">
+  <h3 class="ui dividing header">Signcount</h3>
+  <div class="ui segment">
+  <div class="ui very relaxed list">
+    {{#each user}}
+      <div class="item">
+        <img class="ui avatar image" src="{{ image }}">
+        <div class="content">
+          <a class="header">{{ firstName }} {{ lastName }}</a>
+          <div class="description">{{ signCount }} </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  </div>
+</div>

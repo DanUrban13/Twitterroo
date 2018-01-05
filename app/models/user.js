@@ -8,6 +8,8 @@ const userSchema = mongoose.Schema({
   email: String,
   password: String,
   image: String,
+  tweetCount: Number,
+  signCount: Number,
   following: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

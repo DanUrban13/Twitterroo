@@ -1,0 +1,18 @@
+<div class="right floated left aligned four wide column">
+  <h3 class="ui dividing header">Top contributors</h3>
+  <div class="ui horizontal segments">
+    <div class="ui segment">
+      <div class="ui very relaxed list">
+        {{#each user}}
+          <div class="item">
+            <img class="ui avatar image" src="{{ image }}">
+            <div class="content">
+              <a class="header">{{ firstName }} {{ lastName }}</a>
+              <div class="description">{{ tweetCount }} </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>

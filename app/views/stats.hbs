@@ -1,0 +1,10 @@
+{{#mainMenu adminuser}}
+  {{> mainmenu _id="stats" }}
+{{else}}
+  {{> adminmenu _id="stats" }}
+{{/mainMenu}}
+<div class="ui raised three column grid segment">
+  {{> mostFollowing }}
+  {{> signCount }}
+  {{> topContributors }}
+</div>

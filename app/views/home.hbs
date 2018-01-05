@@ -4,5 +4,10 @@
   {{> adminmenu _id="home" }}
 {{/mainMenu}}
 <section class="ui raised segment">
-  {{> tweetlist }}
+  <div class="ui container">
+    <div class="ui two column padded stacked stackable grid segment">
+      {{> tweetlist }}
+  {{> topContributors }}
+    </div>
+  </div>
 </section>

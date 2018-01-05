@@ -6,6 +6,8 @@
       "lastName": "Simpson",
       "email": "homer@simpson.com",
       "password": "secret",
+      "tweetCount": 0,
+      "signCount": 0,
       "image": "http://res.cloudinary.com/danurban/image/upload/v1514978166/homer_cv1xbe.png"
     },
     "marge": {
@@ -13,6 +15,8 @@
       "lastName": "Simpson",
       "email": "marge@simpson.com",
       "password": "secret",
+      "tweetCount": 0,
+      "signCount": 0,
       "image": "http://res.cloudinary.com/danurban/image/upload/v1514978165/marge_calrch.png",
       "following": [
         "->users.homer"
@@ -23,6 +27,8 @@
       "lastName": "Simpson",
       "email": "bart@simpson.com",
       "password": "secret",
+      "tweetCount": 0,
+      "signCount": 0,
       "image": "http://res.cloudinary.com/danurban/image/upload/v1514978166/bart_wyufqh.png"
     },
     "meggie": {
@@ -30,6 +36,8 @@
       "lastName": "Simpson",
       "email": "meggie@simpson.com",
       "password": "secret",
+      "tweetCount": 0,
+      "signCount": 0,
       "image": "http://res.cloudinary.com/danurban/image/upload/v1515086239/5147886-215px-maggie_knyvyt.png",
       "following": [
         "->users.homer",
@@ -41,6 +49,8 @@
       "lastName": "Szyslak",
       "email": "moe@szyslak.com",
       "password": "secret",
+      "tweetCount": 0,
+      "signCount": 0,
       "image": "http://res.cloudinary.com/danurban/image/upload/v1514978165/moe_zs3uvb.png"
     },
     "barney": {
@@ -48,6 +58,8 @@
       "lastName": "Gumble",
       "email": "Barney@Gumble.com",
       "password": "secret",
+      "tweetCount": 0,
+      "signCount": 0,
       "image": "http://res.cloudinary.com/danurban/image/upload/v1514978166/barney_zngswx.png",
       "following": [
         "->users.homer",
@@ -59,6 +71,8 @@
       "lastName": "Krabappel",
       "email": "Edna@Krabappel.com",
       "password": "secret",
+      "tweetCount": 0,
+      "signCount": 0,
       "image": "http://res.cloudinary.com/danurban/image/upload/v1514978166/edna_qzuuii.png",
       "following": [
         "->users.bart"
@@ -69,6 +83,8 @@
       "lastName": "Quimby",
       "email": "joseph@quimby.com",
       "password": "secret",
+      "tweetCount": 0,
+      "signCount": 0,
       "image": "http://res.cloudinary.com/danurban/image/upload/v1515092761/quimby_zohlfr.gif"
     },
     "lisa": {
@@ -76,6 +92,8 @@
       "lastName": "Simpson",
       "email": "Lisa@Simpson.com",
       "password": "secret",
+      "tweetCount": 0,
+      "signCount": 0,
       "image": "http://res.cloudinary.com/danurban/image/upload/v1514978166/lisa_u9abca.png",
       "following": [
         "->users.homer",

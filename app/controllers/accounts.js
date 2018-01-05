@@ -241,7 +241,7 @@ exports.authenticate = {
           loggedInUser: user.email,
 
         });
-        reply.redirect('/home');
+        reply.redirect('/init');
       } else {
         reply.redirect('/signup');
       }
@@ -265,6 +265,45 @@ exports.showUsers = {
       });
     }).catch(err => {
       console.log(err);
+      reply.redirect('/home');
+    });
+  },
+
+};
+
+exports.init = {
+
+  handler: function (request, reply) {
+    let allTweets = [];
+    Tweet.find({ }).populate('creator').then(res => {
+      res.forEach(tweet => {
+        allTweets.push(tweet);
+      });
+      return User.find({});
+    }).then(users => {
+      for (let i = 0; i < users.length; i++) {
+        users[i].tweetCount = 0;
+        users[i].signCount = 0;
+        for (let j = 0; j < allTweets.length; j++){
+          if(allTweets[j].creator._id.equals(users[i]._id)) {
+            users[i].signCount = users[i].signCount + allTweets[j].text.length;
+            users[i].tweetCount = users[i].tweetCount + 1;
+          }
+        }
+      }
+      let res = [];
+      return users.forEach(function (item) {
+        item.save(function (err) {
+          res.push(err);
+          if (res.length === users.length)
+          {
+            // Done
+          }
+        });
+      });
+    }).then(users => {
+      reply.redirect('/home');
+    }).catch(err => {
       reply.redirect('/home');
     });
   },

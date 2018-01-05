@@ -8,24 +8,55 @@ const cloudinary = require('cloudinary')
 exports.home = {
 
   handler: function (request, reply) {
+    let userStats = [];
     var userEmail = request.auth.credentials.loggedInUser;
-    User.findOne(({ email: userEmail })).then(userFound => {
+    User.find({}).then(users => {
+      for (let i = 0; i < users.length; i++) {
+        if(users[i].tweetCount >= 0) {
+          userStats.push(users[i]);
+        }
+      }
+      return User.findOne({ email: userEmail }).exec();
+    }).then(userFound => {
       return Tweet.find({ creator: userFound }).populate('creator');
     }).then(allTweets => {
-        allTweets.forEach(function(tweet) {
-          tweet.dateString = tweet.date.toUTCString();
-        });
-        allTweets.sort(function(a,b) {return (a.date.getDate() > b.date.getDate()) ? 1 : ((b.date.getDate() > a.date.getDate()) ? -1 : 0);} );
-        reply.view('home', {
-          adminuser: request.auth.credentials.loggedInUser,
-          title: 'Current Tweets',
-          tweets: allTweets,
-        });
-      }).catch(err => {
-        reply.redirect('/');
+      allTweets.forEach(function(tweet) {
+        tweet.dateString = tweet.date.toUTCString();
       });
+      allTweets.sort(function(a,b) {return (a.date.getDate() > b.date.getDate()) ? 1 : ((b.date.getDate() > a.date.getDate()) ? -1 : 0);} );
+      userStats.sort(function(a,b) {return (a.tweetCount < b.tweetCount) ? 1 : ((b.tweetCount < a.tweetCount) ? -1 : 0);} );
+      reply.view('home', {
+        adminuser: request.auth.credentials.loggedInUser,
+        title: 'Current Tweets',
+        tweets: allTweets,
+        user: userStats,
+      });
+    }).catch(err => {
+      reply.redirect('/');
+    });
   },
 };
+
+exports.stats = {
+  handler: function (request, reply) {
+    let userStats = [];
+    User.find({}).then(users => {
+      for (let i = 0; i < users.length; i++) {
+        if(users[i].tweetCount >= 0) {
+          userStats.push(users[i]);
+        }
+      }
+      userStats.sort(function(a,b) {return (a.tweetCount < b.tweetCount) ? 1 : ((b.tweetCount < a.tweetCount) ? -1 : 0);} );
+      reply.view('stats', {
+        adminuser: request.auth.credentials.loggedInUser,
+        title: 'Current Tweets',
+        user: userStats,
+      });
+    }).catch(err => {
+      reply.redirect('/home');
+    });
+  },
+}
 
 exports.homeOfUser = {
 
@@ -152,6 +183,7 @@ exports.tweet = {
     let data = request.payload;
     let userId = null;
     let tweet = null;
+    let tweetingUser = new User();
 
     try {
       const env = require('../.data/.env.json');
@@ -170,6 +202,7 @@ exports.tweet = {
       cloudinary.uploader.upload(fileString, function(result) {
         User.findOne({ email: userEmail }).then(user => {
           userId = user._id;
+          tweetingUser = user;
           tweet = new Tweet();
           console.log('url' + result.url);
           tweet.date = new Date();
@@ -182,17 +215,22 @@ exports.tweet = {
               });
             }
           });
+        }).then(res => {
+          tweetingUser.signCount = tweetingUser.signCount + tweet.text.length;
+          tweetingUser.tweetCount = tweetingUser.tweetCount + 1;
+          return tweetingUser.save();
         }).then(tweet => {
-          reply.redirect('/home');
+            reply.redirect('/home');
         }).catch(err => {
           console.log('could not save tweet');
           reply.redirect('/');
         });
-      });
+    });
     } else {
       User.findOne({ email: userEmail }).then(user => {
         userId = user._id;
         tweet = new Tweet();
+        tweetingUser = user;
         tweet.date = new Date();
         tweet.text = data.tweetText;
         tweet.creator = userId;
@@ -202,6 +240,10 @@ exports.tweet = {
             });
           }
         });
+      }).then(res => {
+        tweetingUser.signCount = tweetingUser.signCount + tweet.text.length;
+        tweetingUser.tweetCount = tweetingUser.tweetCount + 1;
+        return tweetingUser.save();
       }).then(tweet => {
         reply.redirect('/home');
       }).catch(err => {
