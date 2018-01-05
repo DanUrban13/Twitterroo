@@ -101,6 +101,26 @@ exports.global = {
   },
 };
 
+exports.show = {
+
+  handler: function (request, reply) {
+    Tweet.find({}).populate('creator').exec().then(allTweets => {
+      allTweets.forEach(function(tweet) {
+        tweet.dateString = tweet.date.toUTCString();
+      });
+      allTweets.sort(function(a,b) {return (a.date.getDate() > b.date.getDate()) ? 1 : ((b.date.getDate() > a.date.getDate()) ? -1 : 0);} );
+      reply.view('mgmtTweet', {
+        adminuser: request.auth.credentials.loggedInUser,
+        title: 'Current Tweets',
+        tweets: allTweets,
+      });
+    }).catch(err => {
+      console.log(err);
+      reply.redirect('/settings');
+    });
+  },
+};
+
 exports.tweet = {
   payload: {
         output: 'stream',

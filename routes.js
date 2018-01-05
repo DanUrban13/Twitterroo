@@ -14,10 +14,12 @@ module.exports = [
   { method: 'POST', path: '/tweet', config: Tweets.tweet },
   { method: 'GET', path: '/tweet/follow', config: Tweets.follow },
   { method: 'GET', path: '/tweet/global', config: Tweets.global },
+
   { method: 'POST', path: '/register', config: Accounts.register },
   { method: 'GET', path: '/settings', config: Accounts.viewSettings },
   { method: 'POST', path: '/settings', config: Accounts.updateSettings },
   { method: 'GET', path: '/mgmtUser', config: Accounts.show },
+  { method: 'GET', path: '/mgmtTweet', config: Tweets.show },
 
   { method: 'GET', path: '/home', config: Tweets.home },
   { method: 'GET', path: '/home/{id}', config: Tweets.homeOfUser },
@@ -26,6 +28,8 @@ module.exports = [
   { method: 'GET', path: '/userlist', config: Accounts.showUsers },
 
   { method: 'GET', path: '/follow/{id}', config: Accounts.addNewFollow },
+  { method: 'POST', path: '/accounts/delete', config: Accounts.delete },
+  { method: 'POST', path: '/accounts/create', config: Accounts.create },
 
   { method: 'POST', path: '/tweets/delete/{id}', config: Tweets.deleteSpecific },
 

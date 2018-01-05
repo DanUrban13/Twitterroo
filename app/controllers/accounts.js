@@ -1,5 +1,6 @@
 'use strict';
 const User = require('../models/user');
+const Tweet = require('../models/tweet');
 const Joi = require('joi');
 
 exports.main = {
@@ -130,6 +131,54 @@ exports.updateSettings = {
 
 };
 
+exports.create = {
+
+  validate: {
+
+    payload: {
+      firstName: Joi.string().required(),
+      lastName: Joi.string().required(),
+      email: Joi.string().email().required(),
+      password: Joi.string().required(),
+    },
+
+    options: {
+      abortEarly: false,
+    },
+
+    failAction: function (request, reply, source, error) {
+      reply.view('signup', {
+        title: 'Sign up error',
+        errors: error.data.details,
+      }).code(400);
+    },
+
+  },
+
+  handler: function (request, reply) {
+    const editedUser = request.payload;
+
+    let newUser = new User();
+    newUser.firstName = editedUser.firstName;
+    newUser.lastName = editedUser.lastName;
+    newUser.email = editedUser.email;
+    newUser.password = editedUser.password;
+
+    newUser.save().then(user => {
+      return User.find({}).exec();
+    }).then(users => {
+      reply.view('mgmtUser', {
+        title: 'Edit Account Settings',
+        user: users,
+        adminuser: request.auth.credentials.loggedInUser,
+      });
+    }).catch(err => {
+      reply.redirect('/mgmtUser');
+    });
+  },
+
+};
+
 exports.addNewFollow = {
 
   handler: function (request, reply) {
@@ -204,8 +253,6 @@ exports.authenticate = {
 
 exports.showUsers = {
 
-  auth: false,
-
   handler: function (request, reply) {
     User.find({}).populate('user').then(users => {
       let userCount = users.length;
@@ -217,6 +264,7 @@ exports.showUsers = {
         user2: users2,
       });
     }).catch(err => {
+      console.log(err);
       reply.redirect('/home');
     });
   },
@@ -236,4 +284,46 @@ exports.show = {
     });
   },
 
+};
+
+exports.delete = {
+
+  handler: function (request, reply) {
+    let userToDelete = [];
+    userToDelete = request.payload;
+    let length = userToDelete.user.length;
+    if (length > 15) {
+      let userId;
+      User.findById( userToDelete.user ).then(user => {
+        userId = user._id;
+        return User.remove( user ).exec();
+      }).then(user => {
+        return Tweet.remove({ creator: userId }).exec();
+      }).then(user => {
+        reply.redirect('/mgmtUser', {
+          adminuser: request.auth.credentials.loggedInUser,
+        });
+      }).catch(err => {
+        console.log('could not delete user');
+      });
+    } else {
+      for (let i = 0; i < length; i++) {
+        let userId;
+        User.findById( userToDelete.user[i] ).then(user => {
+          userId = user._id;
+          return User.remove( user ).exec();
+        }).then(user => {
+          return Tweet.remove({ creator: userId }).exec();
+        }).then(tweet => {
+          reply.redirect('/mgmtUser', {
+            adminuser: request.auth.credentials.loggedInUser,
+          });
+        }).catch(err => {
+          //console.log(err);
+          console.log('could not delete users');
+        });
+      }
+    }
+
+  },
 };

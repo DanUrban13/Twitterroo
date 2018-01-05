@@ -1,13 +1,13 @@
 <section class="ui raised segment">
   <div class="ui right aligned grid">
-    <div class="right floated left aligned three wide column">
+    <div class="left floated left aligned three wide column">
       <div class="left aligned nine wide column">
         <h3 class="ui dividing header">New User</h3>
       </div>
     </div>
-    <div class="right floated left aligned three wide column">
-      <form id = "deleteSubset" action="/tweets/delete" method="post">
-        <button class="ui button" type="submit" id="removeSelected">create user</button>
+    <div class="right floated right aligned three wide column">
+      <form id = "createUser" action="/accounts/create" method="post">
+        <button class="ui button" type="submit" id="createUserButton">create user</button>
       </form>
     </div>
   </div>
@@ -15,41 +15,39 @@
     <div class="ui grid">
       <div class="ui ten wide column">
         <div class="ui stacked fluid form segment">
-          <form action="/register" method="POST">
-            <h3 class="ui header">Register</h3>
-            <div class="two fields">
-              <div class="field">
-                <label>First Name</label>
-                <input placeholder="First Name" type="text" name="firstName">
-              </div>
-              <div class="field">
-                <label>Last Name</label>
-                <input placeholder="Last Name" type="text" name="lastName">
-              </div>
+          <div class="two fields">
+            <div class="field">
+              <label>First Name</label>
+              <input form="createUser" placeholder="First Name" type="text" name="firstName">
             </div>
             <div class="field">
-              <label>Email</label>
-              <input placeholder="Email" type="text" name="email">
+              <label>Last Name</label>
+              <input form="createUser" placeholder="Last Name" type="text" name="lastName">
             </div>
-            <div class="field">
-              <label>Password</label>
-              <input type="password" name="password">
-            </div>
-          </form>
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input form="createUser" placeholder="Email" type="text" name="email">
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input form="createUser" type="password" name="password">
+          </div>
           {{> formerror }}
         </div>
       </div>
     </div>
   </section>
 
+
+
+
   <div class="ui right aligned grid">
-    <div class="right floated left aligned three wide column">
-      <form action="/tweets/deleteAll" method="post">
-        <button class="ui button" type="submit" id="removeAll">remove all</button>
-      </form>
+    <div class="left aligned nine wide column">
+      <h3 class="ui dividing header">Delete User</h3>
     </div>
     <div class="right floated left aligned three wide column">
-      <form id = "deleteSubset" action="/tweets/delete" method="post">
+      <form id = "deleteSubset" action="/accounts/delete" method="post">
         <button class="ui button" type="submit" id="removeSelected">remove selected</button>
       </form>
     </div>
@@ -65,6 +63,10 @@
           <div class="content">
             <a class="header">{{ firstName }} {{ lastName }}</a>
             <div class="description">{{ following.length }} Following</div>
+          </div>
+          <div class="ui checkbox">
+            <input form="deleteSubset" class="right floated" type="checkbox" name="user" value="{{ _id }}">
+            <label></label>
           </div>
         </div>
       {{/each}}
