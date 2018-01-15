@@ -17,3 +17,5 @@ Student-ID: 3030617
 Web App Hosted : https://twitterroo.herokuapp.com/
 
 Github Hostet Aurelia Client : https://danurban13.github.io/Twitterroo-Client/
+
+Application Overview Video : https://www.youtube.com/watch?v=dx3JBWLqq24
