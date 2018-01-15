@@ -23,7 +23,7 @@ exports.home = {
       allTweets.forEach(function(tweet) {
         tweet.dateString = tweet.date.toUTCString();
       });
-      allTweets.sort(function(a,b) {return (a.date.getDate() > b.date.getDate()) ? 1 : ((b.date.getDate() > a.date.getDate()) ? -1 : 0);} );
+      allTweets.sort(function(a,b) {return (a.date.getTime() < b.date.getTime()) ? 1 : ((b.date.getTime() < a.date.getTime()) ? -1 : 0);} );
       userStats.sort(function(a,b) {return (a.tweetCount < b.tweetCount) ? 1 : ((b.tweetCount < a.tweetCount) ? -1 : 0);} );
       reply.view('home', {
         adminuser: request.auth.credentials.loggedInUser,
@@ -66,7 +66,7 @@ exports.homeOfUser = {
       allTweets.forEach(function(tweet) {
         tweet.dateString = tweet.date.toUTCString();
       });
-      allTweets.sort(function(a,b) {return (a.date.getDate() > b.date.getDate()) ? 1 : ((b.date.getDate() > a.date.getDate()) ? -1 : 0);} );
+      allTweets.sort(function(a,b) {return (a.date.getTime() < b.date.getTime()) ? 1 : ((b.date.getTime() < a.date.getTime()) ? -1 : 0);} );
       reply.view('timeline', {
         adminuser: request.auth.credentials.loggedInUser,
         title: 'Current Tweets',
@@ -98,7 +98,7 @@ exports.follow = {
           }
         }
       });
-      tweets.sort(function(a,b) {return (a.date.getDate() > b.date.getDate()) ? 1 : ((b.date.getDate() > a.date.getDate()) ? -1 : 0);} );
+      tweets.sort(function(a,b) {return (a.date.getTime() < b.date.getTime()) ? 1 : ((b.date.getTime() < a.date.getTime()) ? -1 : 0);} );
       reply.view('timelineFollow', {
         adminuser: request.auth.credentials.loggedInUser,
         title: 'Current Tweets',
@@ -117,7 +117,7 @@ exports.global = {
       allTweets.forEach(function(tweet) {
         tweet.dateString = tweet.date.toUTCString();
       });
-      allTweets.sort(function(a,b) {return (a.date.getDate() > b.date.getDate()) ? 1 : ((b.date.getDate() > a.date.getDate()) ? -1 : 0);} );
+      allTweets.sort(function(a,b) {return (a.date.getTime() < b.date.getTime()) ? 1 : ((b.date.getTime() < a.date.getTime()) ? -1 : 0);} );
       reply.view('timelineGlobal', {
         adminuser: request.auth.credentials.loggedInUser,
         title: 'Current Tweets',
@@ -136,7 +136,7 @@ exports.show = {
       allTweets.forEach(function(tweet) {
         tweet.dateString = tweet.date.toUTCString();
       });
-      allTweets.sort(function(a,b) {return (a.date.getDate() > b.date.getDate()) ? 1 : ((b.date.getDate() > a.date.getDate()) ? -1 : 0);} );
+      allTweets.sort(function(a,b) {return (a.date.getTime() < b.date.getTime()) ? 1 : ((b.date.getTime() < a.date.getTime()) ? -1 : 0);} );
       reply.view('mgmtTweet', {
         adminuser: request.auth.credentials.loggedInUser,
         title: 'Current Tweets',
