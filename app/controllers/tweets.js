@@ -59,9 +59,6 @@ exports.stats = {
 }
 
 exports.homeOfUser = {
-
-  auth: false,
-
   handler: function (request, reply) {
     User.findOne(({ _id: request.params.id })).then(userFound => {
       return Tweet.find({ creator: userFound }).populate('creator');
