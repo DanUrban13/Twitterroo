@@ -11,6 +11,10 @@ You can find a running example if you look at the links below.
 Author: Daniel Urban
 Student-ID: 3030617
 
+Example Users:
+homer@simpson.com   password: secret
+joseph@quimby.com   password: secret
+
 
 # Links and Video
 
